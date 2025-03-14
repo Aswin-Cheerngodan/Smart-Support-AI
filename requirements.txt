@@ -1,0 +1,5 @@
+langgraph==0.3.8
+pandas==2.2.3
+transformers==4.49.0
+fastapi==0.115.11
+pydantic==2.10.6

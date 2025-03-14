@@ -1,0 +1,4 @@
+# config/config.yaml
+log_file: "logs/workflow.log"
+faq_path: "data/knowledge base data/Customer_Support_Conversations.csv"
+ticket_path: "data/tickets.csv"

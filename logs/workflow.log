@@ -1,0 +1,13 @@
+2025-03-14 19:30:16,567 - __main__ - ERROR - Workflow failed: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>
+2025-03-14 20:27:17,310 - __main__ - INFO - Processing single query: hi how are you
+2025-03-14 20:27:17,312 - src.core.workflow - ERROR - Workflow failed: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>
+2025-03-14 20:27:17,312 - __main__ - ERROR - Error processing query 'hi how are you: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>'
+2025-03-14 20:27:19,475 - __main__ - INFO - Processing single query: hi how are you
+2025-03-14 20:27:19,476 - src.core.workflow - ERROR - Workflow failed: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>
+2025-03-14 20:27:19,476 - __main__ - ERROR - Error processing query 'hi how are you: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>'
+2025-03-14 20:29:49,116 - __main__ - INFO - Processing single query: hi there how are you man
+2025-03-14 20:29:49,117 - src.core.workflow - ERROR - Workflow failed: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>
+2025-03-14 20:29:49,117 - __main__ - ERROR - Error processing query 'hi there how are you man: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>'
+2025-03-14 20:29:53,062 - __main__ - INFO - Processing single query: hi there how are you man
+2025-03-14 20:29:53,062 - src.core.workflow - ERROR - Workflow failed: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>
+2025-03-14 20:29:53,062 - __main__ - ERROR - Error processing query 'hi there how are you man: Expected a Runnable, callable or dict.Instead got an unsupported type: <class 'module'>'
