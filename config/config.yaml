@@ -1,0 +1,5 @@
+# config/config.yaml
+log_file: "logs/main_log.log"
+faq_path: "data/knowledge base data/Customer_Support_Conversations.csv"
+ticket_path: "data/tickets.csv"
+categorizer_model_path: "models/distilbert_finetuned"
