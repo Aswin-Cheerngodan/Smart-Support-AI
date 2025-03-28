@@ -4,6 +4,7 @@ import torch
 import logging
 import yaml
 from pathlib import Path
+from src.utils.logger import setup_logger
 
 
 # Load configuration
@@ -11,15 +12,7 @@ config_path = Path(__file__).parent.parent.parent / "config" / "config.yaml"
 with open(config_path, "r") as file:
     config = yaml.safe_load(file)
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    filename="logs/main_log.log",
-    filemode='a',
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__, "logs/app.log")
 
 
 MODEL_PATH = Path("models/fine_tuned_distilbert")
@@ -96,5 +89,5 @@ if __name__ == "__main__":
     for query in test_queries:
         state = SupportState({"query": query})  # Create state object
         updated_state = categorizer(state)  # Run categorization
-        print(f"Query: '{query}' -> Predicted Category: {updated_state['category']}")
+        print(f"Query: '{query}' -> Predicted Category: {updated_state['category']}") 
     

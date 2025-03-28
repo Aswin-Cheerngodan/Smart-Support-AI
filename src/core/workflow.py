@@ -5,6 +5,7 @@ from src.core.state import SupportState, initialize_state
 from src.agents import (categorizer_agent,sentiment_agent, priority_agent, knowledge_agent,
                         response_agent, escalation_agent, ticket_agent, feedback_agent)
 import yaml
+from src.utils.logger import setup_logger
 
 
 
@@ -12,14 +13,8 @@ import yaml
 with open('config/config.yaml', 'r') as file :
     config = yaml.safe_load(file)
 
-# Set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    filename=config.get("log_file", "logs/main_log.log"),
-    filemode='a'
-)
-logger = logging.getLogger(__name__)
+
+logger = setup_logger(__name__, "logs/app.log")
 
 
 def setup_workflow() -> StateGraph:
