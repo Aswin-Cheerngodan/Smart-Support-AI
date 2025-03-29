@@ -148,3 +148,116 @@ Lastly, budget is a consideration. I don’t want to spend over $1,500 unless ther
 2025-03-28 18:07:22 - __main__ - INFO - Loaded index.html
 2025-03-28 18:07:34 - __main__ - INFO - Processing query: how are you
 2025-03-28 18:27:21 - __main__ - INFO - Processing query: hi hi hi 
+2025-03-29 12:09:47 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:09:47 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:09:47 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[-0.9424,  1.1136,  1.0661, -0.2950, -1.5112]]), hidden_states=None, attentions=None)
+2025-03-29 12:09:47 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:09:47 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[ 0.0760,  0.0525,  0.9189, -0.9479, -1.2804]]), hidden_states=None, attentions=None)
+2025-03-29 12:09:47 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:09:47 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[-0.7573, -0.2274,  1.1293, -0.3737, -0.6908]]), hidden_states=None, attentions=None)
+2025-03-29 12:09:47 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:09:47 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[-0.3899,  0.6254,  0.9138, -0.3179, -1.4953]]), hidden_states=None, attentions=None)
+2025-03-29 12:09:47 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:09:48 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[ 0.5417,  0.4593,  0.1709, -0.7818, -1.1458]]), hidden_states=None, attentions=None)
+2025-03-29 12:09:48 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:09:48 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[-0.5843, -0.0036,  1.4945, -0.7707, -1.2983]]), hidden_states=None, attentions=None)
+2025-03-29 12:10:51 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:10:51 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:10:51 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[-0.9424,  1.1136,  1.0661, -0.2950, -1.5112]]), hidden_states=None, attentions=None)
+2025-03-29 12:10:51 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:10:51 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[ 0.0760,  0.0525,  0.9189, -0.9479, -1.2804]]), hidden_states=None, attentions=None)
+2025-03-29 12:10:51 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:10:51 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[-0.7573, -0.2274,  1.1293, -0.3737, -0.6908]]), hidden_states=None, attentions=None)
+2025-03-29 12:10:51 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:10:51 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[-0.3899,  0.6254,  0.9138, -0.3179, -1.4953]]), hidden_states=None, attentions=None)
+2025-03-29 12:10:51 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:10:51 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[ 0.5417,  0.4593,  0.1709, -0.7818, -1.1458]]), hidden_states=None, attentions=None)
+2025-03-29 12:10:51 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:10:51 - __main__ - DEBUG - SequenceClassifierOutput(loss=None, logits=tensor([[-0.5843, -0.0036,  1.4945, -0.7707, -1.2983]]), hidden_states=None, attentions=None)
+2025-03-29 12:18:13 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:18:13 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:18:13 - __main__ - DEBUG - [[0.053350865840911865, 0.41691863536834717, 0.3975921869277954, 0.10193081200122833, 0.030207490548491478]]
+2025-03-29 12:18:13 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:18:13 - __main__ - DEBUG - [[0.20339247584342957, 0.19865626096725464, 0.4725073277950287, 0.0730554386973381, 0.05238857865333557]]
+2025-03-29 12:18:13 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:18:13 - __main__ - DEBUG - [[0.08451385051012039, 0.14356990158557892, 0.5575560927391052, 0.12403573840856552, 0.09032438695430756]]
+2025-03-29 12:18:13 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:18:13 - __main__ - DEBUG - [[0.11300607025623322, 0.3119317591190338, 0.4161943197250366, 0.12145208567380905, 0.037415795028209686]]
+2025-03-29 12:18:13 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:18:13 - __main__ - DEBUG - [[0.3265596032142639, 0.300721138715744, 0.2253880649805069, 0.08692414313554764, 0.06040714308619499]]
+2025-03-29 12:18:13 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:18:13 - __main__ - DEBUG - [[0.08263302594423294, 0.1476883739233017, 0.6606334447860718, 0.06858204305171967, 0.040463097393512726]]
+2025-03-29 12:20:18 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:20:18 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:20:18 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:20:18 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:20:18 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:20:18 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:20:18 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:21:31 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:21:31 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:21:32 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:21:32 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:21:32 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:21:32 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:21:32 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:22:43 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:22:43 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:22:43 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:22:43 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:22:43 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:22:43 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:22:43 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:23:58 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:23:58 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:23:58 - __main__ - ERROR - Sentiment analysis failed: argmax(): argument 'input' (position 1) must be Tensor, not list
+2025-03-29 12:23:58 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:23:58 - __main__ - ERROR - Sentiment analysis failed: argmax(): argument 'input' (position 1) must be Tensor, not list
+2025-03-29 12:23:58 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:23:58 - __main__ - ERROR - Sentiment analysis failed: argmax(): argument 'input' (position 1) must be Tensor, not list
+2025-03-29 12:23:58 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:23:58 - __main__ - ERROR - Sentiment analysis failed: argmax(): argument 'input' (position 1) must be Tensor, not list
+2025-03-29 12:23:58 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:23:58 - __main__ - ERROR - Sentiment analysis failed: argmax(): argument 'input' (position 1) must be Tensor, not list
+2025-03-29 12:23:58 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:23:58 - __main__ - ERROR - Sentiment analysis failed: argmax(): argument 'input' (position 1) must be Tensor, not list
+2025-03-29 12:24:24 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:24:24 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:24:24 - __main__ - DEBUG - 1
+2025-03-29 12:24:24 - __main__ - DEBUG - Negative
+2025-03-29 12:24:24 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:24:24 - __main__ - DEBUG - 2
+2025-03-29 12:24:24 - __main__ - DEBUG - Neutral
+2025-03-29 12:24:24 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:24:24 - __main__ - DEBUG - 2
+2025-03-29 12:24:24 - __main__ - DEBUG - Neutral
+2025-03-29 12:24:24 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:24:25 - __main__ - DEBUG - 2
+2025-03-29 12:24:25 - __main__ - DEBUG - Neutral
+2025-03-29 12:24:25 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:24:25 - __main__ - DEBUG - 0
+2025-03-29 12:24:25 - __main__ - DEBUG - Very Negative
+2025-03-29 12:24:25 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:24:25 - __main__ - DEBUG - 2
+2025-03-29 12:24:25 - __main__ - DEBUG - Neutral
+2025-03-29 12:32:08 - __main__ - INFO - Model and tokenizer loaded from models\sentiment_model
+2025-03-29 12:32:08 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:32:08 - __main__ - INFO - Query: 'I need to reset my password.' -> Probabilities: tensor([[0.0534, 0.4169, 0.3976, 0.1019, 0.0302]]), Predicted Category: Negative
+2025-03-29 12:32:08 - __main__ - INFO - {'query': 'I need to reset my password.', 'sentiment': 'Negative'}
+2025-03-29 12:32:08 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:32:08 - __main__ - INFO - Query: 'Where is my order?' -> Probabilities: tensor([[0.2034, 0.1987, 0.4725, 0.0731, 0.0524]]), Predicted Category: Neutral
+2025-03-29 12:32:08 - __main__ - INFO - {'query': 'Where is my order?', 'sentiment': 'Neutral'}
+2025-03-29 12:32:08 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:32:08 - __main__ - INFO - Query: 'How long does shipping take?' -> Probabilities: tensor([[0.0845, 0.1436, 0.5576, 0.1240, 0.0903]]), Predicted Category: Neutral
+2025-03-29 12:32:08 - __main__ - INFO - {'query': 'How long does shipping take?', 'sentiment': 'Neutral'}
+2025-03-29 12:32:08 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:32:09 - __main__ - INFO - Query: 'I want to return my product.' -> Probabilities: tensor([[0.1130, 0.3119, 0.4162, 0.1215, 0.0374]]), Predicted Category: Neutral
+2025-03-29 12:32:09 - __main__ - INFO - {'query': 'I want to return my product.', 'sentiment': 'Neutral'}
+2025-03-29 12:32:09 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:32:09 - __main__ - INFO - Query: 'Does my laptop come with a warranty?' -> Probabilities: tensor([[0.3266, 0.3007, 0.2254, 0.0869, 0.0604]]), Predicted Category: Very Negative
+2025-03-29 12:32:09 - __main__ - INFO - {'query': 'Does my laptop come with a warranty?', 'sentiment': 'Very Negative'}
+2025-03-29 12:32:09 - __main__ - INFO - Input query toknization done.
+2025-03-29 12:32:09 - __main__ - INFO - Query: 'What are the available deals today?' -> Probabilities: tensor([[0.0826, 0.1477, 0.6606, 0.0686, 0.0405]]), Predicted Category: Neutral
+2025-03-29 12:32:09 - __main__ - INFO - {'query': 'What are the available deals today?', 'sentiment': 'Neutral'}
+2025-03-29 13:54:55 - __main__ - INFO - Category and sentiment
+2025-03-29 13:54:55 - __main__ - INFO - Priority identified: High
