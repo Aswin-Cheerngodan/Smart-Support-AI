@@ -10,22 +10,28 @@ class SupportState(TypedDict):
     """The raw customer query input."""
     
     category: str
-    """The classified category of the query (e.g., 'Billing', 'Technical')."""
+    """The classified category of the query (e.g., 'Order', 'Shipping')."""
     
     sentiment: str
-    """The emotional tone of the query (e.g., 'Positive', 'Negative', 'Urgent')."""
+    """The emotional tone of the query (e.g., 'Very positive', 'Positive', 'Neutral', 'Negative', 'Very negative')."""
     
     priority: str
     """Priority level assigned to the query (e.g., 'High', 'Medium', 'Low')."""
     
     kb_answer: Optional[str]
     """Answer retrieved from the knowledge base, if available."""
+
+    top_similarity_score: int
+    """Top similarity score from the knowledge base."""
     
     response: str
     """Generated response to the customer."""
     
     escalate: bool
     """Flag indicating if the query requires human intervention."""
+
+    reason: str
+    """Reason for escalating the query."""
     
     ticket_id: Optional[str]
     """Unique ticket ID for escalated queries."""
@@ -58,5 +64,5 @@ def initialize_state(query : str) -> SupportState:
         escalate=False,
         ticket_id=None,
         feedback_score=None,
-        timestamp=datetime.utcnow().isoformat()
+        timestamp=datetime.now().astimezone().isoformat()
     )
