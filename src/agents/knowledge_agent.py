@@ -40,7 +40,7 @@ def load_category_embeddings(category: str):
 
 
 
-def Knowledge_update(state: SupportState = None) -> SupportState:
+def Knowledge_update(state: SupportState) -> SupportState:
     """Finds the related conversation from the knowledge base and updates the state
     
     Args:

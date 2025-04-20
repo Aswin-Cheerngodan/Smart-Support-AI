@@ -1,2 +1,3 @@
 transformers==4.49.0
-annoy==
+google-genai==1.11.0
+python-dotenv==1.1.0
