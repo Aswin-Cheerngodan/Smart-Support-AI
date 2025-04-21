@@ -9,3 +9,5 @@ python-multipart==0.0.20
 transformer==4.49.
 google-genai==1.11.0
 python-dotenv==1.1.0
+aiofiles==24.1.0
+uuid==1.30

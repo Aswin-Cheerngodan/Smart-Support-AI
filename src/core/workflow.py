@@ -2,9 +2,15 @@ import logging
 from typing import Dict, Any
 from langgraph.graph import StateGraph, END
 from src.core.state import SupportState, initialize_state
-from src.agents import (categorizer_agent,sentiment_agent, priority_agent, knowledge_agent,
-                        response_agent, escalation_agent, ticket_agent, feedback_agent)
+from src.agents.categorizer_agent import categorizer
+from src.agents.sentiment_agent import sentiment_analyzer
+from src.agents.priority_agent import assign_priority
+from src.agents.knowledge_agent import Knowledge_update
+from src.agents.response_agent import generate_response
+from src.agents.escalation_agent import escalation_agent
+from src.agents.ticket_agent import ticket_agent
 import yaml
+from datetime import datetime
 from src.utils.logger import setup_logger
 
 
@@ -27,43 +33,42 @@ def setup_workflow() -> StateGraph:
     workflow = StateGraph(SupportState)
 
     # Add nodes (Agents)
-    workflow.add_node("categorizer", categorizer_agent)
-    workflow.add_node("sentiment", sentiment_agent)
-    workflow.add_node("priority", priority_agent)
-    workflow.add_node("knowledge", knowledge_agent)
-    workflow.add_node("response", response_agent)
+    workflow.add_node("categorizer", categorizer)
+    workflow.add_node("sentiment_analyzer", sentiment_analyzer)
+    workflow.add_node("prioritizer", assign_priority)
+    workflow.add_node("knowledge", Knowledge_update)
+    workflow.add_node("response_generator", generate_response)
     workflow.add_node("escalation", escalation_agent)
-    workflow.add_node("ticket", ticket_agent)
-    workflow.add_node("feedback", feedback_agent)
+    workflow.add_node("ticket_creator", ticket_agent)
 
     # Define edges (sequential flow)
     workflow.set_entry_point("categorizer")
-    workflow.add_edge("categorizer", "sentiment")
-    workflow.add_edge("sentiment", "priority")
-    workflow.add_edge("priority", "knowledge")
-    workflow.add_edge("knowledge", "response")
-    workflow.add_edge("response", "escalation")
+    workflow.add_edge("categorizer", "sentiment_analyzer")
+    workflow.add_edge("sentiment_analyzer", "prioritizer")
+    workflow.add_edge("prioritizer", "knowledge")
+    workflow.add_edge("knowledge", "response_generator")
+    workflow.add_edge("response_generator", "escalation")
 
     def escalation_router(state : SupportState) -> str:
         """Route based on escalation status."""
         if state["escalate"]:
             logger.info(f"Escalating query: {state['query']}")
-            return "ticket"
+            return "ticket_creator"
         
         logger.info(f"Non-escalated query: {state['query']}")
-        return "feedback"
+        return END
     
     workflow.add_conditional_edges("escalation", escalation_router, 
-                                   {"ticket":"ticket", "feedback":"feedback"})
+                                   {"ticket_creator":"ticket_creator", END:END})
 
     # Final edges
-    workflow.add_edge("ticket", "feedback")
-    workflow.add_edge("feedback", END)
-
+    workflow.add_edge("ticket_creator", END)
+    _workflow_cache = workflow
+    logger.info("Workflow initialized and cached")
     return workflow
 
 
-def run_workflow(query: str) -> Dict[str, Any]:
+async def run_workflow(query: str) -> Dict[str, Any]:
     """
     Execute the workflow for a given query.
     
@@ -77,16 +82,38 @@ def run_workflow(query: str) -> Dict[str, Any]:
         workflow = setup_workflow()
         app = workflow.compile()
         initial_state = initialize_state(query)
-        result = app.invoke(initial_state)
+        logger.info(f"Workflow started with query: {query}")
+        result = await app.ainvoke(initial_state)
         logger.info(f"Workflow completed for query: {query}")
         return result
     except Exception as e:
-        logger.error(f"Workflow failed: {str(e)}")
-        raise
+        logger.error(f"Workflow failed for query '{query}': {str(e)}", exc_info=True)
+        return {
+            "query": query,
+            "category": "",
+            "sentiment": "",
+            "priority": "",
+            "kb_answer": "",
+            "top_similarity_score":0,
+            "response": "An error occurred. Please try again.",
+            "escalate": False,
+            "message": "Workflow failed",
+            "ticket_id": "",
+            "timestamp": datetime.now().astimezone().isoformat()
+        }
 
 
-if __name__ == "__main__":
-    # Testing the workflow
-    test_query = "My payement failed and I'm furious!"
-    result = run_workflow(test_query)
-    print(result)
+# if __name__ == "__main__":
+#     import asyncio
+
+#     async def test_workflow():
+#         test_queries = [
+#             "My payment failed and I'm furious!",
+#             "How do I reset my phone?"
+#         ]
+#         for query in test_queries:
+#             result = await run_workflow(query)
+#             print(f"Query: {query}")
+#             print(f"Result: {result}\n")
+
+#     asyncio.run(test_workflow())

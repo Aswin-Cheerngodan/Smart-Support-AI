@@ -18,7 +18,7 @@ def calculate_escalation_score(sentiment: str, priority: str, max_similarity: fl
         "Very Positive": -0.5,
         "Positive": -0.2,
         "Neutral": 0.0,
-        "Negative": 0.5,
+        "Negative": 0.7,
         "Very Negative": 1.0
     }
     
@@ -44,6 +44,7 @@ def calculate_escalation_score(sentiment: str, priority: str, max_similarity: fl
         return total_score
     except Exception as e:
         logger.error(f"Error while calculating the escalation score : {str(e)}")
+        return 
 
 
 def escalation_agent(state: SupportState) -> SupportState:
@@ -62,9 +63,12 @@ def escalation_agent(state: SupportState) -> SupportState:
             logger.info(f"No escalation needed for query '{query}' with score {escalation_score:.2f}")
         
         state['escalate'] = escalate
-        state['reason'] = f"Sentiment: {sentiment}, Priority: {priority}, Max Similarity: {max_similarity:.2f}, Score: {escalation_score:.2f}"
+        state['message'] = f"Sentiment: {sentiment}, Priority: {priority}, Max Similarity: {max_similarity:.2f}, Score: {escalation_score:.2f}"
+        return state
     except Exception as e:
         logger.error(f"Error while escalation process: {str(e)}")
+        state["escalate"] = True
+        return state
 
 
 

@@ -61,10 +61,9 @@ async def get_form(request: Request):
 async def process_query_endpoint(request: QueryRequest):
     """Process a single customer query and return JSON response for the frontend."""
     try:
-        logger.info(f"Processing query: {request.query}")
-        state = SupportState({"query": request.query})  # Create state object
-        updated_state = categorizer(state)  # Run categorization
-        result = updated_state['category']  # Get the category
+        result = await run_workflow(request.query)
+
+        result = result['response']  # Get the category
         response = result  # Format response
         return {"response": response}  # Match frontend expectation
     except Exception as e:

@@ -30,14 +30,11 @@ class SupportState(TypedDict):
     escalate: bool
     """Flag indicating if the query requires human intervention."""
 
-    reason: str
+    message: str
     """Reason for escalating the query."""
     
     ticket_id: Optional[str]
     """Unique ticket ID for escalated queries."""
-    
-    feedback_score: Optional[int]
-    """Customer satisfaction score (1-5), if provided."""
     
     timestamp: str
     """ISO timestamp of when the query was processed."""

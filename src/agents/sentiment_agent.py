@@ -50,7 +50,7 @@ def sentiment_analyzer(state: SupportState) -> SupportState:
             max_length=512
         )
         inputs = {k: v.to(device) for k, v in inputs.items()}
-        logger.info("Input query toknization done.")
+        logger.info("Input query toknization done for senitment analyzer.")
         # Inference
         with torch.no_grad():
             outputs = model(**inputs)
@@ -58,10 +58,9 @@ def sentiment_analyzer(state: SupportState) -> SupportState:
             probs = torch.softmax(logits, dim=1).cpu()
             predicted_idx = torch.argmax(probs, dim=1).item()
             sentiment = SENTIMENT_MAP[predicted_idx]
-            logger.info(f"Query: '{query}' -> Probabilities: {probs}, Predicted Category: {sentiment}")
-            state['sentiment'] = sentiment
-            logger.info(state)
-            return state
+        logger.info(f"Query: '{query}' -> Probabilities: {probs}, Predicted sentiment: {sentiment}")
+        state['sentiment'] = sentiment
+        return state
         
     except Exception as e:
         logger.error(f"Sentiment analysis failed '{query}': {str(e)}")
@@ -72,18 +71,18 @@ def sentiment_analyzer(state: SupportState) -> SupportState:
 
 
 
-if __name__=="__main__":
-    test_queries = [
-        "I need to reset my password.",  # Expected: Login and Account
-        "Where is my order?",  # Expected: Order
-        "How long does shipping take?",  # Expected: Shipping
-        "I want to return my product.",  # Expected: Cancellations and returns
-        "Does my laptop come with a warranty?",  # Expected: Warranty
-        "What are the available deals today?",  # Expected: Shopping
-        ]
+# if __name__=="__main__":
+#     test_queries = [
+#         "I need to reset my password.",  # Expected: Login and Account
+#         "Where is my order?",  # Expected: Order
+#         "How long does shipping take?",  # Expected: Shipping
+#         "I want to return my product.",  # Expected: Cancellations and returns
+#         "Does my laptop come with a warranty?",  # Expected: Warranty
+#         "What are the available deals today?",  # Expected: Shopping
+#         ]
 
-    # Run test cases
-    for query in test_queries:
-        state = SupportState({"query": query})  # Create state object
-        updated_state = sentiment_analyzer(state)  # Run categorization
-        # print(f"Query: '{query}' -> Predicted Category: {updated_state['category']}") 
+#     # Run test cases
+#     for query in test_queries:
+#         state = SupportState({"query": query})  # Create state object
+#         updated_state = sentiment_analyzer(state)  # Run categorization
+#         # print(f"Query: '{query}' -> Predicted Category: {updated_state['category']}") 

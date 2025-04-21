@@ -11,7 +11,7 @@ def assign_priority(state: SupportState) -> SupportState:
     # Fetch the category and sentiment values
     category = state["category"]
     sentiment = state["sentiment"]
-    logger.info(f"Category and sentiment")
+    logger.info(f"Fetched Category and sentiment")
     # Priority rules
     priority_rules = {
         "Login and Account": {
@@ -56,17 +56,24 @@ def assign_priority(state: SupportState) -> SupportState:
             "Positive": "Low",
             "Very Positive": "Low",
         },
+        "General": {
+            "Very Negative": "High",
+            "Negative": "High",
+            "Neutral": "Medium",
+            "Positive": "Low",
+            "Very Positive": "Low",
+        }
     }
     
     try:
     # Determine priority
-        priority = priority_rules.get("Warranty").get("Very Negative")
+        priority = priority_rules.get(category).get(sentiment)
         logger.info(f"Priority identified: {priority}")
-    
+        state['priority'] = priority
+        return state
     except Exception as e:
         logger.error(f"Failed priortiy identification: {str(e)}")
-        state["priority"] = "None"
+        state["priority"] = "Medium"
+        return state
     
-    # Update the state with the priority
-    state["priority"] = priority
-    return state
+    

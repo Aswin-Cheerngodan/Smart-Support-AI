@@ -1,7 +1,6 @@
 from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
 from src.core.state import SupportState
 import torch
-import logging
 import yaml
 from pathlib import Path
 from src.utils.logger import setup_logger
@@ -31,6 +30,7 @@ except Exception as e:
 # Move model to GPU if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
+logger.info(f"Model moved to device: {device}")
 
 def categorizer(state: SupportState) -> SupportState:
     """
@@ -53,7 +53,7 @@ def categorizer(state: SupportState) -> SupportState:
             max_lenth=512
         )
         inputs = {k: v.to(device) for k, v in inputs.items()}
-
+        logger.info(f"Input query tokenization is done for categorizer")
         # Inference
         with torch.no_grad():
             outputs = model(**inputs)
@@ -63,7 +63,7 @@ def categorizer(state: SupportState) -> SupportState:
             category =  LABELS[predicted_idx]
 
         prob_dict = {label: round(prob, 4) for label, prob in zip(LABELS, probs)}
-        logger.info(f"🔍 Query: '{query}' -> Probabilities: {prob_dict}, Predicted Category: {category}")
+        logger.info(f"Query: '{query}' -> Probabilities: {prob_dict}, Predicted Category: {category}")
 
         state["category"] = category
         return state
@@ -75,19 +75,19 @@ def categorizer(state: SupportState) -> SupportState:
 
 
 
-if __name__ == "__main__":
-    test_queries = [
-    "I need to reset my password.",  # Expected: Login and Account
-    "Where is my order?",  # Expected: Order
-    "How long does shipping take?",  # Expected: Shipping
-    "I want to return my product.",  # Expected: Cancellations and returns
-    "Does my laptop come with a warranty?",  # Expected: Warranty
-    "What are the available deals today?",  # Expected: Shopping
-    ]
+# if __name__ == "__main__":
+#     test_queries = [
+#     "I need to reset my password.",  # Expected: Login and Account
+#     "Where is my order?",  # Expected: Order
+#     "How long does shipping take?",  # Expected: Shipping
+#     "I want to return my product.",  # Expected: Cancellations and returns
+#     "Does my laptop come with a warranty?",  # Expected: Warranty
+#     "What are the available deals today?",  # Expected: Shopping
+#     ]
 
-    # Run test cases
-    for query in test_queries:
-        state = SupportState({"query": query})  # Create state object
-        updated_state = categorizer(state)  # Run categorization
-        print(f"Query: '{query}' -> Predicted Category: {updated_state['category']}") 
+#     # Run test cases
+#     for query in test_queries:
+#         state = SupportState({"query": query})  # Create state object
+#         updated_state = categorizer(state)  # Run categorization
+#         print(f"Query: '{query}' -> Predicted Category: {updated_state['category']}") 
     
