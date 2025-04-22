@@ -103,17 +103,17 @@ async def run_workflow(query: str) -> Dict[str, Any]:
         }
 
 
-# if __name__ == "__main__":
-#     import asyncio
+if __name__ == "__main__":
+    import asyncio
 
-#     async def test_workflow():
-#         test_queries = [
-#             "My payment failed and I'm furious!",
-#             "How do I reset my phone?"
-#         ]
-#         for query in test_queries:
-#             result = await run_workflow(query)
-#             print(f"Query: {query}")
-#             print(f"Result: {result}\n")
+    async def test_workflow():
+        test_queries = [
+            "My payment failed and I'm furious!",
+            "How do I reset my phone?"
+        ]
+        for query in test_queries:
+            result = await run_workflow(query)
+            print(f"Query: {query}")
+            print(f"Result: {result}\n")
 
-#     asyncio.run(test_workflow())
+    asyncio.run(test_workflow())

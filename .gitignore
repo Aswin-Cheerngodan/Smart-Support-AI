@@ -2,3 +2,4 @@ agent_env/
 models/
 sample.py
 embeddings/
+logs/
