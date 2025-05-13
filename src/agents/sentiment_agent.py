@@ -14,7 +14,7 @@ with open(config_path, "r") as file:
 
 logger = setup_logger(__name__, "logs/app.log")
 
-MODEL_PATH = Path(r"models\sentiment_model")
+MODEL_PATH = Path(r"models/sentiment_model")
 SENTIMENT_MAP = {0: "Very Negative", 1: "Negative", 2: "Neutral", 3: "Positive", 4: "Very Positive"}
 # Load sentiment model and tokenizer
 try:
@@ -71,18 +71,3 @@ def sentiment_analyzer(state: SupportState) -> SupportState:
 
 
 
-# if __name__=="__main__":
-#     test_queries = [
-#         "I need to reset my password.",  # Expected: Login and Account
-#         "Where is my order?",  # Expected: Order
-#         "How long does shipping take?",  # Expected: Shipping
-#         "I want to return my product.",  # Expected: Cancellations and returns
-#         "Does my laptop come with a warranty?",  # Expected: Warranty
-#         "What are the available deals today?",  # Expected: Shopping
-#         ]
-
-#     # Run test cases
-#     for query in test_queries:
-#         state = SupportState({"query": query})  # Create state object
-#         updated_state = sentiment_analyzer(state)  # Run categorization
-#         # print(f"Query: '{query}' -> Predicted Category: {updated_state['category']}") 

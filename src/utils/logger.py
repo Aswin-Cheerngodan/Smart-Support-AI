@@ -74,11 +74,5 @@ def setup_logger(name: str, log_file: str = "logs/app.log") -> logging.Logger:
 
     return logger
 
-# if __name__ == "__main__":
-#     # Example usage
-#     logger = setup_logger(__name__, "logs/test.log")
-#     logger.debug("Debug message")
-#     logger.info("Info message 🔍")
-#     logger.warning("Warning message")
-#     logger.error("Error message")
+
 

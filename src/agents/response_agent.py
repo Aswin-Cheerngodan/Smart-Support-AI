@@ -65,7 +65,7 @@ def generate_response(state: SupportState) -> SupportState:
         logger.info(f"Generated Response: {generated_response}")
         
         # Update the state with the generated response
-        state["response"] = generated_response
+        state["response"] = str(generated_response)
         return state
     except Exception as e:
         logger.error(f"Error generating response for '{query}': {e}")
@@ -73,6 +73,3 @@ def generate_response(state: SupportState) -> SupportState:
         return state
 
 
-# if __name__=="__main__":
-#     response = generate_response()
-#     logger.info(response)

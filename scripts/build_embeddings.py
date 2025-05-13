@@ -9,9 +9,9 @@ from pathlib import Path
 
 logger = setup_logger(__name__, "logs/app.log")
 
-csv_file = Path(r'data\knowledge base data\knowledge_base.csv')
-embedding_dir = Path(r'data\embeddings')
-model_dir = Path(r'models\embedding_model')
+csv_file = Path(r'data/knowledge base data/knowledge_base.csv')
+embedding_dir = Path(r'data/embeddings')
+model_dir = Path(r'models/embedding_model')
 
 
 model = SentenceTransformer(str(model_dir))

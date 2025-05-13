@@ -2,13 +2,13 @@ import logging
 from typing import Dict, Any
 from langgraph.graph import StateGraph, END
 from src.core.state import SupportState, initialize_state
-from src.agents.categorizer_agent import categorizer
+from src.agents.categorizer import categorizer
 from src.agents.sentiment_agent import sentiment_analyzer
-from src.agents.priority_agent import assign_priority
+from src.agents.prioritizer import assign_priority
 from src.agents.knowledge_agent import Knowledge_update
 from src.agents.response_agent import generate_response
-from src.agents.escalation_agent import escalation_agent
-from src.agents.ticket_agent import ticket_agent
+from src.agents.escalation import escalation_agent
+from src.agents.ticket_raiser import ticket_agent
 import yaml
 from datetime import datetime
 from src.utils.logger import setup_logger
@@ -102,18 +102,3 @@ async def run_workflow(query: str) -> Dict[str, Any]:
             "timestamp": datetime.now().astimezone().isoformat()
         }
 
-
-if __name__ == "__main__":
-    import asyncio
-
-    async def test_workflow():
-        test_queries = [
-            "My payment failed and I'm furious!",
-            "How do I reset my phone?"
-        ]
-        for query in test_queries:
-            result = await run_workflow(query)
-            print(f"Query: {query}")
-            print(f"Result: {result}\n")
-
-    asyncio.run(test_workflow())

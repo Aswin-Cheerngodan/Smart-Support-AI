@@ -8,14 +8,14 @@ from src.core.state import SupportState
 
 logger = setup_logger(__name__, "logs/app.log")
 
-model_dir = Path(r'models\embedding_model')
+model_dir = Path(r'models/embedding_model')
 if not model_dir.exists():
     logger.error(f"Local model not found at {model_dir}")
 
 model = SentenceTransformer(str(model_dir))
 dim = 384
 
-embedding_dir = Path(r'data\embeddings')
+embedding_dir = Path(r'data/embeddings')
 
 category_embeddings = {}
 category_metadata = {}
@@ -82,7 +82,5 @@ def Knowledge_update(state: SupportState) -> SupportState:
         return state
 
 
-# if __name__=="__main__":
-#     tops = Knowledge_update()
-#     logger.info(tops)
+
 

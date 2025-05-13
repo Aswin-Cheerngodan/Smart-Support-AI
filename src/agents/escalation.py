@@ -72,7 +72,3 @@ def escalation_agent(state: SupportState) -> SupportState:
 
 
 
-
-# if __name__=="__main__":
-#     score = calculate_escalation_score("Very Negative", "High", 0.5)
-#     logger.debug(f"similarity socre: {score}")

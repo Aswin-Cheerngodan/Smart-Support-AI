@@ -75,19 +75,5 @@ def categorizer(state: SupportState) -> SupportState:
 
 
 
-# if __name__ == "__main__":
-#     test_queries = [
-#     "I need to reset my password.",  # Expected: Login and Account
-#     "Where is my order?",  # Expected: Order
-#     "How long does shipping take?",  # Expected: Shipping
-#     "I want to return my product.",  # Expected: Cancellations and returns
-#     "Does my laptop come with a warranty?",  # Expected: Warranty
-#     "What are the available deals today?",  # Expected: Shopping
-#     ]
 
-#     # Run test cases
-#     for query in test_queries:
-#         state = SupportState({"query": query})  # Create state object
-#         updated_state = categorizer(state)  # Run categorization
-#         print(f"Query: '{query}' -> Predicted Category: {updated_state['category']}") 
     

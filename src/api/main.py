@@ -5,12 +5,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 from src.core.workflow import run_workflow
-from src.agents.categorizer_agent import categorizer
+from src.agents.categorizer import categorizer
 from src.core.state import SupportState
+from src.utils.logger import setup_logger
+import markdown
 import logging
 import yaml
 from pathlib import Path
-from src.utils.logger import setup_logger
 
 # Load configuration
 config_path = Path(__file__).parent.parent.parent / "config" / "config.yaml"
@@ -29,7 +30,7 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080", "http://127.0.0.1:8000"],  # Add frontend origin(s)
+    allow_origins=["*"],  # Add frontend origin(s)
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods (GET, POST, OPTIONS, etc.)
     allow_headers=["*"],  # Allow all headers
@@ -53,7 +54,7 @@ class QueryResponse(BaseModel):
 @app.get("/", response_class=HTMLResponse)
 async def get_form(request: Request):
     """Serve the HTML form page"""
-    logger.info("Loaded index.html")
+    logger.info("Loaded the main index.html")
     return templates.TemplateResponse("index.html", {"request": request})
 
 # Process query from frontend
@@ -64,17 +65,12 @@ async def process_query_endpoint(request: QueryRequest):
         result = await run_workflow(request.query)
 
         result = result['response']  # Get the category
-        response = result  # Format response
+        response = markdown.markdown(result)  # Format response
         return {"response": response}  # Match frontend expectation
     except Exception as e:
         logger.error(f"Error processing query '{request.query}': {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
-# Optional: Handle root endpoint to avoid 405
-@app.get("/")
-async def root():
-    """Redirect or provide a simple message for the root URL."""
-    return {"message": "Welcome to Smart Support AI. Use /home for the UI or /process-query for API."}
 
 # Health check
 @app.get("/health")
@@ -84,4 +80,4 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)

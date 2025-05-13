@@ -1,10 +1,8 @@
 import uuid
 import aiofiles
-import asyncio
 import csv
 from datetime import datetime
 from pathlib import Path
-from typing import Dict
 from src.core.state import SupportState
 
 from src.utils.logger import setup_logger
@@ -82,5 +80,4 @@ async def ticket_agent(state: SupportState) -> SupportState:
     
 
 
-# if __name__=="__main__":
-#     s = asyncio.run(log_ticket("nothing", "big , nothing", "Nothing", datetime.now()))
+

@@ -3,3 +3,4 @@ models/
 sample.py
 embeddings/
 logs/
+.env
