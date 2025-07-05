@@ -21,7 +21,7 @@ With a sleek, user-friendly web interface and a robust **FastAPI-powered backend
 
 A team of specialized AI agents collaborates to process incoming queries:
 
-- **Categorizer Agent:** Classifies queries (e.g., Billing, Technical) using a fine-tuned DistilBERT model.
+- **Categorizer Agent:** Classifies queries (e.g., Billing, Order) using a fine-tuned DistilBERT model.
 - **Sentiment Analyzer Agent:** Detects emotional tone (positive, negative, neutral).
 - **Priority Agent:** Assigns urgency based on sentiment and category.
 - **Knowledge Base Search Agent:** Retrieves relevant answers from a JSON-based knowledge base.
@@ -30,7 +30,7 @@ A team of specialized AI agents collaborates to process incoming queries:
 - **Ticket Agent:** Generates unique support tickets for escalated cases.
 
 ### 🌐 Real-Time Web Interface
-- Bootstrap-styled front-end for submitting queries and viewing responses instantly.
+- Tailwind-CSS-styled front-end for submitting queries and viewing responses instantly.
 
 ### ⚙️ Asynchronous Processing
 - Efficiently handles multiple queries using async workflows.
@@ -53,7 +53,7 @@ A team of specialized AI agents collaborates to process incoming queries:
 - **TensorFlow** — Model fine-tuning
 - **aiofiles** — Asynchronous file handling
 - **UUID** — Unique ticket generation
-- **Bootstrap** — Frontend styling
+- **Tailwind CSS** — Frontend styling
 
 ---
 
@@ -61,13 +61,64 @@ A team of specialized AI agents collaborates to process incoming queries:
 
 ### ✅ Prerequisites
 
-- Python 3.9+
-- Google Cloud Account (with Vertex AI API enabled for Gemini)
-- Hugging Face Account (optional, for model access)
+- Python 3.12
+- Google Cloud Account (API enabled for Gemini)
 
 ### 📦 Installation Steps
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/smart-support-ai.git
-   cd smart-support-ai
+   git clone https://github.com/Aswin-Cheerngodan/Smart-Support-AI.git
+   cd Smart-Support-AI
+   ```
+2. **Create .env file in the root**
+   ```bash
+   GOOGLE_API_KEY=your_google_api_key
+   ```
+   ### Run with Docker(Recommended)
+   
+   Build the Docker image
+   ```bash
+   docker build -t smart-support-ai .
+   ```
+   Run the Docker container
+   ```bash
+   docker run --env-file .env -p 8000:8000 smart-support-ai
+   ```
+   Access the app
+   Open your browser and go to: http://localhost:8000
+   
+   ### Run Locally(without docker)
+3. **Set Up a Virtual Environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+4. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+5. Run the Server
+   ```bash
+   python src/api/main.py
+   ```
+   Access the Interface
+   Open your browser and go to: http://localhost:8000
+
+## ▶️ Usage
+- Submit a Query
+
+   Example: "Why hasn’t my order shipped?"
+
+- Monitor Activity
+
+   Logs: Check logs/
+   Tickets: View data/tickets.csv
+
+## 📬 Contact
+Questions or suggestions? Open an issue or contact me at aachu8966@gmail.com.
+
+
+   
+   
